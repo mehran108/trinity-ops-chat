@@ -1,6 +1,6 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 
-<section class="user-question">
+<!-- <section class="user-question">
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -42,53 +42,53 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<ng-container *ngFor="let chat of chats">
+  <section *ngIf="chat.sender == 'user'" class="user-question">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-start">
+            <img src="assets/images/user.png" alt="">
+            <div class="content">
+              <h6 class="m-0">
+                {{chat.data.answer}}
+              </h6>
+            </div>
 
-<section class="user-question">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-start">
-          <img src="assets/images/user.png" alt="">
-          <div class="content">
-            <h6 class="m-0">
-              Where can I download the piano syllabus?
-            </h6>
           </div>
-
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="user-answer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-start">
-          <img src="assets/images/comments.png" alt="">
-          <div class="content">
-            <p>You can download the piano syllabus from the following link:</p>
-            <a href="#">https://www.trinitycollege.com/resource/?id=9079</a>
+  <section *ngIf="chat.sender == 'bot'" class="user-answer">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-start">
+            <img src="assets/images/comments.png" alt="">
+            <div class="content">
+              <p>{{chat.data.answer}}</p>
+            </div>
           </div>
-
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</ng-container>
+
 
 <div class="container pt-3 pb-3">
   <div class="row">
     <div class="col-11">
       <div class="textarea">
-        <textarea placeholder="Type a new question (e.g. Where I find the current piano syllabuses?)"></textarea>
-        <img src="assets/images/send.png" alt="">
+        <textarea [(ngModel)]="question" [ngModelOptions]="{standalone: true}" placeholder="Type a new question (e.g. Where I find the current piano syllabuses?)"></textarea>
+        <img (click)="sendMessage()" src="assets/images/send.png" alt="">
       </div>
     </div>
     <div class="col-1">
-      <a href="#">Clear chat</a>
+      <a href="javascript:void(0)" (click)="onClear()">Clear chat</a>
     </div>
   </div>
 </div>

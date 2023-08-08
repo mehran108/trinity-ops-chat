@@ -2,6 +2,8 @@
 
 <section class="main">
   <div class="container">
+    <ng-container *ngIf="faq && faq.chats.length == 0">
+
     <div class="row">
       <div class="col-12">
         <h1 class="text-center main-heading">
@@ -12,88 +14,23 @@
     <div class="row">
       <div class="col-12">
         <mat-tab-group>
-          <mat-tab label="English Language">
-            <div class="row">
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  How do I book an exam?
+          <ng-container *ngFor="let tab of tabs">
+            <mat-tab [label]="tab.heading">
+              <div class="row">
+              <ng-container *ngFor="let question of tab.questions">
+                <div (click)="selectedTabQuestion = question" class="col-md-6 col-xl-3">
+                  <div class="content-box">
+                   {{question.question}}
+                  </div>
                 </div>
+              </ng-container>
               </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  How do I upload a digital exam?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  Where can I download the latest syllabuses?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  What's the latest Trinity newa?
-                </div>
-              </div>
-            </div>
-          </mat-tab>
-          <mat-tab label="Music">
-            <div class="row">
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  How do I book an exam?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  How do I upload a digital exam?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  Where can I download the latest syllabuses?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  What's the latest Trinity newa?
-                </div>
-              </div>
-            </div>
-          </mat-tab>
-          <mat-tab label="Drama">
-            <div class="row">
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  How do I book an exam?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  How do I upload a digital exam?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  Where can I download the latest syllabuses?
-                </div>
-              </div>
-              <div class="col-md-6 col-xl-3">
-                <div class="content-box" routerLink="/faq">
-                  What's the latest Trinity newa?
-                </div>
-              </div>
-            </div>
-          </mat-tab>
+            </mat-tab>
+          </ng-container>
         </mat-tab-group>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="textarea">
-          <textarea placeholder="Type a new question (e.g. Where I find the current piano syllabuses?)"></textarea>
-          <img src="assets/images/send.png" alt="">
-        </div>
-      </div>
-    </div>
+  </ng-container>
+    <app-faq [faqQuestionModel]="selectedTabQuestion"></app-faq>
   </div>
 </section>
