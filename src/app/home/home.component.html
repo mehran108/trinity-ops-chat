@@ -1,36 +1,36 @@
 <app-header></app-header>
 
 <section class="main">
-  <div class="container">
+  <div class="container ">
     <ng-container *ngIf="faq && faq.chats.length == 0">
-
-    <div class="row">
-      <div class="col-12">
-        <h1 class="text-center main-heading">
-          Type your question below or choose from our <br> list of most requested per subject area.
-        </h1>
+      <div class="row pt-4">
+        <div class="col-12">
+          <h1 class="text-center main-heading">
+            Choose a subject area and type your question below.
+          </h1>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <mat-tab-group>
-          <ng-container *ngFor="let tab of tabs">
-            <mat-tab [label]="tab.heading">
-              <div class="row">
-              <ng-container *ngFor="let question of tab.questions">
-                <div (click)="selectedTabQuestion = question" class="col-md-6 col-xl-3">
-                  <div class="content-box">
-                   {{question.question}}
-                  </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-tab-group>
+            <ng-container *ngFor="let tab of tabs">
+              <mat-tab [label]="tab.heading">
+                <h3 class="text-center ask-question">Need some help? Try these commonly asked questions</h3>
+                <div class="row">
+                  <ng-container *ngFor="let question of tab.questions">
+                    <div (click)="selectedTabQuestion = question" class="col-md-6 col-xl-3">
+                      <div class="content-box">
+                        {{question.question}}
+                      </div>
+                    </div>
+                  </ng-container>
                 </div>
-              </ng-container>
-              </div>
-            </mat-tab>
-          </ng-container>
-        </mat-tab-group>
+              </mat-tab>
+            </ng-container>
+          </mat-tab-group>
+        </div>
       </div>
-    </div>
-  </ng-container>
-    <app-faq [faqQuestionModel]="selectedTabQuestion"></app-faq>
+    </ng-container>
   </div>
+  <app-faq [ngClass]="faq && faq.chats.length == 0 ? 'faq-home' : 'faq-inner'" [faqQuestionModel]="selectedTabQuestion"></app-faq>
 </section>
