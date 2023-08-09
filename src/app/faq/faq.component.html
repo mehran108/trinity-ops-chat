@@ -6,8 +6,7 @@
           <div class="d-flex align-items-start">
             <img src="assets/images/user.png" alt="">
             <div class="content">
-              <h6 class="m-0">
-                {{chat.data.answer}}
+              <h6 class="m-0" [innerHTML]="chat.data.answer">
               </h6>
             </div>
 
@@ -24,7 +23,18 @@
           <div class="d-flex align-items-start">
             <img src="assets/images/comments.png" alt="">
             <div class="content">
-              <p>{{chat.data.answer}}</p>
+              <p [innerText]="chat.data.answer">{{chat.data.answer}}</p>
+              <ng-container *ngFor="let source of chat.data.sources">
+                <p [innerText]="source.content"></p>
+                <ng-container>
+                  <span class="read-more">Read More:</span>
+                  <div class="link d-flex align-items-center">
+                    <span class="material-icons pe-1">link</span>
+                    <a [href]="source.url" target="_blank">{{source.url}}</a>
+                  </div>
+                </ng-container>
+              </ng-container>
+              <p></p>
             </div>
           </div>
         </div>
