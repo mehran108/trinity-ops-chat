@@ -24,16 +24,20 @@
             <img src="assets/images/comments.png" alt="">
             <div class="content">
               <p [innerText]="chat.data.answer">{{chat.data.answer}}</p>
-              <ng-container *ngFor="let source of chat.data.sources">
-                <p [innerText]="source.content"></p>
-                <ng-container>
-                  <span class="read-more">Read More:</span>
-                  <div class="link d-flex align-items-center">
-                    <span class="material-icons pe-1">link</span>
-                    <a [href]="source.url" target="_blank">{{source.url}}</a>
-                  </div>
+              <ng-container *ngIf="chat.data.sources && chat.data.sources.length">
+              <span (click)="chat.readMore = !chat.readMore" class="read-more">Read More</span>
+              <ng-container *ngIf="chat.readMore">
+                <ng-container *ngFor="let source of chat.data.sources">
+                  <!-- <p [innerText]="source.content"></p> -->
+                  <ng-container>
+                    <div class="link d-flex align-items-center">
+                      <span class="material-icons pe-1">link</span>
+                      <a [href]="source.url" target="_blank">{{source.url}}</a>
+                    </div>
+                  </ng-container>
                 </ng-container>
               </ng-container>
+            </ng-container>
               <p></p>
             </div>
           </div>
