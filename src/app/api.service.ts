@@ -6,14 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
   constructor(public http: HttpClient) {}
-  sendMessage(body: any) {
+  sendMessage(request: any) {
     const headers = new HttpHeaders({
-      'token': 'ccf9af79-a1b4-45be-bc3b-e36cc90f66ef'
+      token: request.token,
     });
-    return this.http.post<Array<any>>(
-      'https://api.writesonic.com/v1/botsonic/botsonic/generate/016fa399-5ed8-4a65-ae65-f6ad3efc7ddc',
-      body,
-      { headers }
-    );
+    return this.http.post<Array<any>>(`${request.url}`, request.body, {
+      headers,
+    });
   }
 }

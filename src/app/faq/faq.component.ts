@@ -8,6 +8,7 @@ import { ApiService } from '../api.service';
 })
 export class FaqComponent implements OnInit, OnChanges {
   @Input() public faqQuestionModel!: any;
+  @Input() public selectedTab!: any;
   public question!: string;
   public chats: Array<any> = new Array();
   constructor(public apiService: ApiService) { }
@@ -49,7 +50,11 @@ export class FaqComponent implements OnInit, OnChanges {
     }
     this.chats.push(chatModel);
     this.question = '';
-    this.apiService.sendMessage(model).subscribe((res: Array<any>) => {
+    const request = {
+      ...this.selectedTab,
+      body: model
+    }
+    this.apiService.sendMessage(request).subscribe((res: Array<any>) => {
       res = res.map(el => {
         return  {
           sender: 'bot',
