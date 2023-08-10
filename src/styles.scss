@@ -12,7 +12,12 @@ body {
 
 .main {
     background-color: #eeeeee;
-    height: calc(100vh - 110px);
+    min-height: 100vh;
+    @media (min-width: 1400px){
+        height: calc(100vh - 110px);
+        min-height: auto;
+    }
+  
 
     .main-heading {
         color: #040404;
@@ -98,7 +103,7 @@ body {
     border: 2px solid #000;
     display: flex;
     align-items: center;
-    height: 150px;
+    height: 120px;
     background-color: #fff;
     padding-right: 30px;
 
@@ -109,10 +114,12 @@ body {
         resize: none;
         padding: 10px;
         outline: none;
+        font-size: 16px;
 
         &::placeholder {
             color: #ababab;
             font-weight: bold;
+            font-size: 16px;
         }
     }
 
@@ -140,7 +147,7 @@ body {
 
 .user-question {
     padding-top: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     background-color: #fff;
 }
 
@@ -154,6 +161,7 @@ body {
     background-color: #eeeeee;
     padding-top: 30px;
     padding-bottom: 30px;
+    border-bottom: 2px solid #000;
 
     .mat-mdc-tab-label-container .mat-mdc-tab.mdc-tab {
         height: 60px !important;

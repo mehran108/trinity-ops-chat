@@ -6,21 +6,21 @@
           <mat-tab label="English Language">
             <div class="row">
               <div class="col-12">
-                <h3 class="text-center ask-question">Answer are based on the selected subject area.</h3>
+                <h3 class="text-center ask-question">Answers are based on the selected subject area.</h3>
               </div>
             </div>
           </mat-tab>
           <mat-tab label="Music">
             <div class="row">
               <div class="col-12">
-                <h3 class="text-center ask-question">Answer are based on the selected subject area.</h3>
+                <h3 class="text-center ask-question">Answers are based on the selected subject area.</h3>
               </div>
             </div>
           </mat-tab>
           <mat-tab label="Drama">
             <div class="row">
               <div class="col-12">
-                <h3 class="text-center ask-question">Answer are based on the selected subject area.</h3>
+                <h3 class="text-center ask-question">Answers are based on the selected subject area.</h3>
               </div>
             </div>
           </mat-tab>
@@ -87,14 +87,14 @@
       <div class="col-12">
         <div class="textarea">
           <textarea [(ngModel)]="question" [ngModelOptions]="{standalone: true}"
-            placeholder="Type a new question (e.g. Where I find the current piano syllabuses?)"></textarea>
+            placeholder="Type a question (e.g. How can I book an exam?)"></textarea>
           <img (click)="sendMessage()" src="assets/images/send.png" alt="">
         </div>
       </div>
       <div class="col-12">
-        <div class="d-flex align-items-center justify-content-between mt-3 clear-chat">
+        <div class="d-flex align-items-center justify-content-between mt-2 clear-chat">
           <a href="javascript:void(0)" (click)="onClear()">Clear chat</a>
-          <a [routerLink]="'/about'">“How are the answers generated?</a>
+          <a [routerLink]="'/about'">How are the answers generated?</a>
         </div>
 
       </div>
