@@ -11,14 +11,18 @@ import { HeaderComponent } from './header/header.component';
 import { FaqComponent } from './faq/faq.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { ChatComponent } from './chat/chat.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [			
     AppComponent,
       HomeComponent,
       HeaderComponent,
       FaqComponent,
-      AboutComponent
+      AboutComponent,
+      ChatComponent,
+      DashboardComponent
    ],
   imports: [
     BrowserModule,

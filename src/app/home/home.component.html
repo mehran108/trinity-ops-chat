@@ -1,8 +1,8 @@
 <app-header></app-header>
 
 <section class="main">
-  <div class="container ">
-    <ng-container *ngIf="faq && faq.chats.length == 0">
+  <div class="container">
+    <ng-container>
       <div class="row pt-4">
         <div class="col-12">
           <h1 class="text-center main-heading">
@@ -12,15 +12,17 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <mat-tab-group [(selectedIndex)]="selectedIndex">
+          <mat-tab-group [(selectedIndex)]="selectedIndex" (selectedIndexChange)="onIndexChange()">
             <ng-container *ngFor="let tab of tabs">
               <mat-tab [label]="tab.heading">
-                <h3 class="text-center ask-question">Need some help? Try these commonly asked questions.</h3>
+                <h3 class="text-center ask-question">
+                  Need some help? Try these commonly asked questions.
+                </h3>
                 <div class="row">
                   <ng-container *ngFor="let question of tab.questions">
                     <div (click)="selectedTabQuestion = question" class="col-md-6 col-xl-3">
                       <div class="content-box">
-                        {{question.question}}
+                        {{ question.question }}
                       </div>
                     </div>
                   </ng-container>
@@ -32,6 +34,4 @@
       </div>
     </ng-container>
   </div>
-  <app-faq [ngClass]="faq && faq.chats.length == 0 ? 'faq-home' : 'faq-inner'" [faqQuestionModel]="selectedTabQuestion"
-    [selectedTab]="tabs[selectedIndex]"></app-faq>
 </section>
