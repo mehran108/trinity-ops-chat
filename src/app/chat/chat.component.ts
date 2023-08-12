@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit, OnChanges  {
     if(simpleChange && simpleChange['faqQuestionModel'] && simpleChange['faqQuestionModel'].currentValue) {
       this.faqQuestion(simpleChange['faqQuestionModel'].currentValue);
     }
-    if(simpleChange && simpleChange['selectedIndex'] && simpleChange['selectedIndex'].currentValue) {
+    if(simpleChange && simpleChange['selectedIndex'] && simpleChange['selectedIndex']) {
       this.chats = [];
     }
   }

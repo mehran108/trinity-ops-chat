@@ -14,7 +14,7 @@ body {
     background-color: #eeeeee;
     min-height: 100vh;
     @media (min-width: 1400px){
-        height: calc(100vh - 110px);
+        // height: calc(100vh - 110px);
         min-height: auto;
     }
 
@@ -141,7 +141,7 @@ body {
 
     .content {
         padding-left: 30px;
-        font-weight: 600;
+        font-weight: 500;
     }
 }
 
